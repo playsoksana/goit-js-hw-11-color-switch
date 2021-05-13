@@ -11,15 +11,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/playsoksana/webpack-base.git"
+    "url": "git+https://github.com/playsoksana/goit-js-hw-11-color-switch.git"
   },
   "keywords": [],
   "author": "PLS",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/playsoksana/webpack-base/issues"
+    "url": "https://github.com/playsoksana/goit-js-hw-11-color-switch/issues"
   },
-  "homepage": "https://github.com/playsoksana/webpack-base#readme",
+  "homepage": "https://github.com/playsoksana/goit-js-hw-11-color-switch#readme",
   "devDependencies": {
     "@babel/core": "^7.11.6",
     "@babel/plugin-proposal-class-properties": "^7.10.4",
