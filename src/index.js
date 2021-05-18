@@ -9,40 +9,30 @@ const refs = {
     body: document.querySelector('body'),
 };
 
-downloadsColorInLocalStorage();
-refs.startBtn.addEventListener('click', stasts);
-
 let intervalIdChangeColor = null;
-let indexColor = null;
-
-
-function stasts() {
-    refs.startBtn.removeEventListener('click', stasts);
-    refs.stopBtn.addEventListener('click', stopChangeColor);
-    intervalIdChangeColor = setInterval(colorChange, 1000);
-};
-
-function stopChangeColor() {
-    refs.stopBtn.removeEventListener('click', stopChangeColor);
-    refs.startBtn.addEventListener('click', stasts);
+let color = null;
+addColorFromlocalStorage();
+refs.startBtn.addEventListener('click', ev=> {
+    ev.target.disabled = true;
+   refs.stopBtn.disabled = false;
+    intervalIdChangeColor = setInterval(() => {
+        color = colors[randomIntegerFromInterval(0, colors.length-1)];
+        setColortoLocalStorage(color);
+        refs.body.style.backgroundColor = color;
+       
+    }, 1000);
+})
+refs.stopBtn.addEventListener('click', ev=>{    
+    ev.target.disabled = true;
+   refs.startBtn.disabled = false;
     clearInterval(intervalIdChangeColor);
-    addColorInLocalStorage();
+})
+
+function setColortoLocalStorage (color) {
+localStorage.setItem('color', color);
 };
-
-function colorChange() {
-    indexColor = randomIntegerFromInterval(0, colors.length - 1);
-    refs.body.style.backgroundColor = colors[indexColor];
-};
-
-
-//localStorage
-
-function addColorInLocalStorage() {
-     localStorage.setItem('color', colors[indexColor]);
-};
-
-function downloadsColorInLocalStorage() {
-if (localStorage.getItem('color')){
-    refs.body.style.backgroundColor = localStorage.getItem('color');
+function addColorFromlocalStorage(){
+    if (localStorage.getItem('color')) {
+        refs.body.style.backgroundColor = localStorage.getItem('color');
+    }
 }
-};
